@@ -23,7 +23,7 @@ A Flask web app that simulates stock trading with real-time pricing data. Users 
 1. Clone the repo:
 
    ```bash
-   git clone <your-url>
+   git clone https://github.com/zbrusco/finance.git
    cd finance
    ```
 
@@ -49,3 +49,4 @@ A Flask web app that simulates stock trading with real-time pricing data. Users 
 ---
 
 **This is an educational simulation. No real money or trading involved.**
+
