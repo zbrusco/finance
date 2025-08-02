@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Balance
+{% endblock %}
+
+{% block main %}
+    <h4><strong>Balance: </strong>{{ balance | usd }}</h4>
+    <form action="/balance" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="balance" placeholder="Amount" type="text">
+        </div>
+        <button class="btn btn-primary" name="action" type="submit" value="withdraw">Withdraw</button>
+        <button class="btn btn-primary" name="action" type="submit" value="deposit">Deposit</button>
+    </form>
+{% endblock %}

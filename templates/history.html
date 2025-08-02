@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <div class="section">
+        <h4><strong>History</strong></h4>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Ticker</th>
+                    <th>Price</th>
+                    <th>Shares</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for share in shares %}
+                        <tr>
+                            <td>{{ share.type }}</td>
+                            <td>{{ share.symbol }}</td>
+                            <td>{{ share.price | usd }}</td>
+                            <td>{{ share.shares }}</td>
+                            <td>{{ share.total | usd }}</td>
+                            <td>{{ share.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

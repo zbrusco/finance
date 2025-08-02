@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <div class="section">
+        <h4><strong>Current Balance</strong></h4>
+        <h4>{{ cash | usd }}</h4>
+        <br />
+        <h4><strong>Your Stocks</strong></h4>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Shares</th>
+                    <th>Cost Basis</th>
+                    <th>Current Price</th>
+                    <th>Total</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for share in shares %}
+                    <tr>
+                        <td>{{ share.symbol }}</td>
+                        <td>{{ share.shares }}</td>
+                        <td>{{ share.avg_price | usd }}</td>
+                        <td>{{ share.cur_price | usd }}</td>
+                        <td>{{ share.present_value | usd }}</td>
+                        <td class="{% if (share.present_value - share.cost_basis) / (share.cost_basis * 100) > 0 %} bg-success {% else %} bg-danger {% endif %}">{{ ((share.present_value - share.cost_basis) * 100 / (share.cost_basis)) | round(2) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+
+        <br />
+        <h4><strong>Total Balance</strong></h4>
+        <h4>{{ total | usd }}</h4>
+    </div>
+
+
+{% endblock %}
